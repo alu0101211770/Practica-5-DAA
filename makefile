@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -Wall -Werror -Wextra -pedantic -std=c++17 -g -fsanitize=address
+CXXFLAGS = -Wall -Wextra -pedantic -std=c++17 -g -fsanitize=address
 LDFLAGS = -fsanitize=address
 
 SRC = test/test.cc $(wildcard src/*.cc)

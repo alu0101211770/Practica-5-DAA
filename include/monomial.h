@@ -1,11 +1,11 @@
 /**
- * Universidad de La Laguna
+ * University of La Laguna 
  * ESIT (Escuela Superior de Ingeniería y Tecnología)
- * Grado de Ingeniería Informática
- * Diseño y Análisis de Algoritmos
+ * Degree of Computer Engineering
+ * Interactive Application Programming
  *
  * @author Alejandro Peraza González
- * @date 19 Marzo 2021
+ * @date 19 March 2021
  */
 
 #ifndef MONOMIAL_H_

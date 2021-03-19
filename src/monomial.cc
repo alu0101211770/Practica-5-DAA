@@ -1,3 +1,13 @@
+/**
+ * University of La Laguna 
+ * ESIT (Escuela Superior de Ingeniería y Tecnología)
+ * Degree of Computer Engineering
+ * Interactive Application Programming
+ *
+ * @author Alejandro Peraza González
+ * @date 19 March 2021
+ */
+
 #include "../include/monomial.h"
 
 Monomial::Monomial(int coefficient, int exponent) {
@@ -28,9 +38,14 @@ void Monomial::setExponent(int exponent) {
 }
 
 std::ostream& operator<<(std::ostream& os, const Monomial& monomial) {
-  // if () {
-
-  // }
-  os << monomial.coefficient_ << VARIABLE << '^' << monomial.exponent_;
+  if (monomial.coefficient_ != 0) {
+    os << abs(monomial.coefficient_);
+    if (monomial.exponent_ != 0) {
+      os << VARIABLE;
+      if (monomial.exponent_ != 1) {
+        os << '^' << monomial.exponent_;
+      }
+    } 
+  }
   return os;
 }

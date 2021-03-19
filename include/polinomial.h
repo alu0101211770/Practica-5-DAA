@@ -1,11 +1,11 @@
 /**
- * Universidad de La Laguna
+ * University of La Laguna 
  * ESIT (Escuela Superior de Ingeniería y Tecnología)
- * Grado de Ingeniería Informática
- * Diseño y Análisis de Algoritmos
+ * Degree of Computer Engineering
+ * Interactive Application Programming
  *
  * @author Alejandro Peraza González
- * @date 19 Marzo 2021
+ * @date 19 March 2021
  */
 
 #ifndef POLINOMIAL_H_
@@ -13,6 +13,8 @@
 
 #include "monomial.h"
 #include <vector>
+#include <map>
+#include <string>
 
 /**
  * @brief Representation of a monomial 
@@ -38,8 +40,26 @@ class Polinomial
    */
   ~Polinomial();
 
+  /**
+   * @brief Operator << overloading to print a polinomial
+   * 
+   * @param os Output stream
+   * @param monomial Polinomial to print
+   * @return std::ostream& 
+   */
+  friend std::ostream& operator<<(std::ostream& os, const Polinomial& polinomial);
+
+  /**
+   * @brief Operator [] overloading to access a monomial of the polinomial
+   * 
+   * @param degree Of the monomial to access
+   * @return Monomial accesed
+   */
+  Monomial operator[](int degree);
+
  private:
   std::vector<Monomial> monomials_;
+  std::map<int, int> positions_;
   int degree_;
   int terms_;
 };

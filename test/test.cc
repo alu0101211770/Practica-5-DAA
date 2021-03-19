@@ -1,11 +1,11 @@
 /**
- * Universidad de La Laguna
+ * University of La Laguna 
  * ESIT (Escuela Superior de Ingeniería y Tecnología)
- * Grado de Ingeniería Informática
- * Diseño y Análisis de Algoritmos
+ * Degree of Computer Engineering
+ * Interactive Application Programming
  *
  * @author Alejandro Peraza González
- * @date 19 Marzo 2021
+ * @date 19 March 2021
  */
 
 #include "../include/monomial.h"
@@ -13,12 +13,10 @@
 #include <iostream>
 
 
-int main(int argc, char const* argv[]) {
-  if (argc < 5) {
-    std::cout << argv << std::endl;
-    // Monomial monito_viren(2, 3);
-    // std::cout << monito_viren << std::endl;
-    std::vector<int> coefficients = {1, 3, 4};
-    Polinomial polinomito_gabriel(coefficients, coefficients.size() - 1);
-  } 
+int main() {
+  // Monomial monito_viren(2, 3);
+  // std::cout << monito_viren << std::endl;
+  std::vector<int> coefficients = {1, -3, 0, 4};
+  Polinomial polinomito_gabriel(coefficients);
+  std::cout << polinomito_gabriel << std::endl;
 }
