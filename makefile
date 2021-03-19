@@ -4,7 +4,7 @@ LDFLAGS = -fsanitize=address
 
 SRC = test/test.cc $(wildcard src/*.cc)
 OBJ = $(SRC:.cc=.o)
-EXEC = bin/polinomios
+EXEC = bin/polinomials
 
 all: $(EXEC)
 
