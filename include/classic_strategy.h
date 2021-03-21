@@ -1,5 +1,5 @@
 /**
- * University of La Laguna 
+ * University of La Laguna
  * ESIT (Escuela Superior de Ingeniería y Tecnología)
  * Degree of Computer Engineering
  * Interactive Application Programming
@@ -8,15 +8,14 @@
  * @date 19 March 2021
  */
 
-#ifndef BRUTE_STRATEGY_H_
-#define BRUTE_STRATEGY_H_
+#ifndef CLASSIC_STRATEGY_H_
+#define CLASSIC_STRATEGY_H_
 
 #include "strategy.h"
 
-class Brute_strategy : public Strategy
-{
+class ClassicStrategy : public Strategy {
  public:
-  Polinomial PolinomialProduct(Polinomial &p, Polinomial &q);
+  Polynomial PolinomialProduct(Polynomial &p, Polynomial &q);
 };
 
 #endif

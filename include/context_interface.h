@@ -1,5 +1,5 @@
 /**
- * University of La Laguna 
+ * University of La Laguna
  * ESIT (Escuela Superior de Ingeniería y Tecnología)
  * Degree of Computer Engineering
  * Interactive Application Programming
@@ -11,9 +11,8 @@
 #ifndef CONTEXT_INTERFACE_H_
 #define CONTEXT_INTERFACE_H_
 
-#include "polinomial.h"
+#include "polynomial.h"
 #include "strategy.h"
-
 
 /**
  * @brief Context Interface to use the strategies
@@ -25,7 +24,7 @@ class Context {
  public:
   /**
    * @brief Construct a new Context object
-   * 
+   *
    * @param strategy Chosen strategy
    */
   Context(Strategy *strategy);
@@ -34,15 +33,15 @@ class Context {
    * @brief Destroy the Context object. Destroys the strategy as well
    */
   ~Context();
-  
+
   /**
    * @brief Method to use the current strategy
-   * 
-   * @param p First polinomial
-   * @param q Second polinomial
-   * @return Polinomial result 
+   *
+   * @param p First polynomial
+   * @param q Second polynomial
+   * @return Polynomial result
    */
-  Polinomial ContextInterface(Polinomial &p, Polinomial &q);
+  Polynomial ContextInterface(Polynomial &p, Polynomial &q);
 };
 
 #endif

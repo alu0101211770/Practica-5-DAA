@@ -97,11 +97,26 @@ class Monomial {
   /**
    * @brief Operator + overloading to add two monomials
    * 
-   * @param x First monomial to add
    * @param y Second monomial to add
-   * @return Monomial with the result of the add
+   * @return Monomial with the result of the addition
    */
   Monomial operator+(const Monomial &y);
+
+  /**
+   * @brief Operator - overloading to substract two monomials
+   * 
+   * @param y Second monomial to substract
+   * @return Monomial with the result of the substraction
+   */
+  Monomial operator-(const Monomial &y);
+
+  /**
+   * @brief Operator * overloading to multiply two monomials
+   * 
+   * @param y Second monomial to multiply
+   * @return Monomial with the result of the multiplication
+   */
+  Monomial operator*(const Monomial &y);
 
  private:
   int coefficient_;

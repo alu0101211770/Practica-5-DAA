@@ -1,5 +1,5 @@
 /**
- * University of La Laguna 
+ * University of La Laguna
  * ESIT (Escuela Superior de Ingeniería y Tecnología)
  * Degree of Computer Engineering
  * Interactive Application Programming
@@ -10,14 +10,10 @@
 
 #include "../include/context_interface.h"
 
-Context::Context(Strategy *strategy) {
-  _strategy = strategy; 
-}
+Context::Context(Strategy *strategy) { _strategy = strategy; }
 
-Context::~Context() {
-  delete _strategy; 
-}
+Context::~Context() { delete _strategy; }
 
-Polinomial Context::ContextInterface(Polinomial &p, Polinomial &q) { 
-  return _strategy->PolinomialProduct(p, q); 
+Polynomial Context::ContextInterface(Polynomial &p, Polynomial &q) {
+  return _strategy->PolinomialProduct(p, q);
 }

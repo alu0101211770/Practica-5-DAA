@@ -1,5 +1,5 @@
 /**
- * University of La Laguna 
+ * University of La Laguna
  * ESIT (Escuela Superior de Ingeniería y Tecnología)
  * Degree of Computer Engineering
  * Interactive Application Programming
@@ -11,13 +11,12 @@
 #ifndef STRATEGY_H_
 #define STRATEGY_H_
 
-#include "polinomial.h"
+#include "polynomial.h"
 
-class Strategy
-{
+class Strategy {
  public:
   virtual ~Strategy() = default;
-  virtual Polinomial PolinomialProduct(Polinomial &p, Polinomial &q) = 0;
+  virtual Polynomial PolinomialProduct(Polynomial &p, Polynomial &q) = 0;
 };
 
 #endif

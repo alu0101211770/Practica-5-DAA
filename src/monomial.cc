@@ -49,3 +49,42 @@ std::ostream& operator<<(std::ostream& os, const Monomial& monomial) {
   }
   return os;
 }
+
+Monomial Monomial::operator+(const Monomial &y) {
+  try {
+    if (exponent_ != y.getExponent()) {
+      throw std::invalid_argument("You can't add monomials with different exponents");
+    } else {
+      return Monomial(coefficient_ + y.getCoefficient(), exponent_);
+    }
+  } catch(const std::exception& e) {
+    std::cerr << e.what() << '\n';
+    throw;
+  }
+}
+
+Monomial Monomial::operator-(const Monomial &y) {
+  try {
+    if (exponent_ != y.getExponent()) {
+      throw std::invalid_argument("You can't substract monomials with different exponents");
+    } else {
+      return Monomial(coefficient_ - y.getCoefficient(), exponent_);
+    }
+  } catch(const std::exception& e) {
+    std::cerr << e.what() << '\n';
+    throw;
+  }
+}
+
+Monomial Monomial::operator*(const Monomial &y) {
+  try {
+    if (exponent_ != y.getExponent()) {
+      throw std::invalid_argument("You can't multiply monomials with different exponents");
+    } else {
+      return Monomial(coefficient_ * y.getCoefficient(), exponent_ * y.getExponent());
+    }
+  } catch(const std::exception& e) {
+    std::cerr << e.what() << '\n';
+    throw;
+  }
+}
