@@ -10,8 +10,7 @@
 
 #include "../include/divide_conquer_strategy.h"
 
-Polynomial DivideConquerStrategy::PolinomialProduct(Polynomial &p,
-                                                    Polynomial &q) {
+Polynomial DivideConquerStrategy::PolinomialProduct(Polynomial &p, Polynomial &q) {
   if (p.getTerms() == 1 && q.getTerms() == 1) {
     Polynomial sub_result;
     sub_result.insert(p[0] * q[0]);
@@ -45,18 +44,19 @@ Polynomial DivideConquerStrategy::PolinomialProduct(Polynomial &p,
   // std::cout << "r_h:\n" << r_h << std::endl;
   // Polynomial r;
   Polynomial r1 = (r_m - r_l - r_h);
-  r1 * (p.getTerms() / 2);
-  std::cout << "r1:\n" << r1 << std::endl;
+  r1 *(p.getTerms() / 2);
+  // std::cout << "r1:\n" << r1 << std::endl;
   Polynomial r2 = r_h;
-  //std::cout << p.getTerms() << std::endl;
-  r2 * (p.getTerms());
-  std::cout << "r2:\n" << r2 << std::endl;
+  // std::cout << p.getTerms() << std::endl;
+  // std::cout << "r2:\n" << r2 << std::endl;
+  r2 *((p.getTerms() / 2 * 2));
+  // std::cout << "r2:\n" << r2 << std::endl;
   // std::cout << "Hola4...\n";
-  // std::cout << 
-  // r1 + r2;
-  Polynomial r = r_l + r1 + r2;
-  std::cout << "r: " << r << std::endl;
+  // std::cout <<
+
   // std::cout << "Hola5...\n";
+  Polynomial r = r_l + r1 + r2;
+  // std::cout << "r: " << r << std::endl;
 
   return r;
 }

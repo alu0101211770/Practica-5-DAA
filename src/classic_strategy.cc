@@ -10,5 +10,5 @@ Polynomial ClassicStrategy::PolinomialProduct(Polynomial &p, Polynomial &q) {
     Monomial current(sum, i);
     r.insert(current);
   }
-  return r;  // !
+  return r;
 }

@@ -71,7 +71,7 @@ std::ostream &operator<<(std::ostream &os, const Polynomial &polynomial) {
   bool first = true;
   for (int i = 0; i < polynomial.terms_; i++) {
     Monomial currentMonomial = polynomial.at(i);
-    std::cout << i << ": ";
+    // std::cout << i << ": ";
     // std::cout << currentMonomial << std::endl;
     int coefficient = currentMonomial.getCoefficient();
     if (coefficient != 0) {
@@ -103,6 +103,7 @@ Polynomial Polynomial::operator+(const Polynomial &y) {
   // std::cout << result.getTerms() << std::endl;
   // int terms = y.getTerms();
   // std::cout << terms_ << std::endl;
+  // std::cout << terms_ << ' ' << y.getTerms() << std::endl;
   int terms = terms_ >= y.getTerms() ? terms_ : y.getTerms();
   for (int i = 0; i < terms; i++) {
     // std::cout << at(i) << " + " << y.at(i) << std::endl;
@@ -119,15 +120,22 @@ Polynomial Polynomial::operator-(const Polynomial &y) {
   }
   return result;
 }
-
+// TODO
 void Polynomial::operator*(const int &y) {
+  // std::cout << getDegree() << " " <<  getTerms() << std::endl;
   Polynomial result;
-  result.setDegree(getDegree() - 1);
-  result.terms_ = getTerms() - 1;
+  result.setDegree(y - 1);
+  result.terms_ = y;
+  result.positions_.clear();
   for (int i = 0; i < terms_; i++) {
     Monomial current_monomial = at(i);
     current_monomial.setExponent(current_monomial.getExponent() + y);
     result.insert(current_monomial);
   }
+  // std::cout << getTerms() << std::endl;
   *this = result;
+  // std::cout << getTerms() << std::endl;
+  // for (auto i = positions_.begin(); i != positions_.end(); i++) {
+  //   std::cout << i->first << ' ' << i->second << std::endl;
+  // }
 }
