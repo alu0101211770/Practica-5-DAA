@@ -31,7 +31,6 @@ class Polynomial {
    * @brief Construct a new Polynomial object
    *
    * @param coefficients Array containing the coefficients
-   * @param size Size of the coefficients
    */
   Polynomial(std::vector<int> coefficients);
 
@@ -125,7 +124,7 @@ class Polynomial {
    * @param y Integer exponent
    * @return Polynomial with the result of the multiplication
    */
-  void operator*(const int &y);
+  Polynomial operator*(const int &y);
 
  private:
   std::vector<Monomial> monomials_;

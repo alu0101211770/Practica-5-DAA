@@ -11,7 +11,6 @@
 #include "../include/polynomial.h"
 
 Polynomial::Polynomial() {
-  // TODO PENSAR
   degree_ = -1;
   terms_ = 0;
 }
@@ -25,10 +24,6 @@ Polynomial::Polynomial(std::vector<int> coefficients) {
     if (coefficients[i] != 0) {
       Monomial current_monomial(coefficients[i], i);
       monomials_.push_back(current_monomial);
-      positions_[i] = monomials_.size() - 1;
-      // std::cout << i << ' ' << positions_[i] << ' ' << at(i) << std::endl;
-      // std::cout << "degree: " << i << ' ';
-      // std::cout << "location: " << positions_[i] << std::endl;
     }
   }
 }
@@ -41,38 +36,28 @@ int Polynomial::getTerms() const { return terms_; }
 
 void Polynomial::insert(Monomial monomial) {
   monomials_.push_back(monomial);
-  positions_[++degree_] = monomials_.size() - 1;
+  degree_++;
   terms_++;
 }
 
 void Polynomial::split(Polynomial &lower_half, Polynomial &upper_half) {
-  // std::cout << terms_ / 2 << std::endl;
   int half = terms_ / 2;
-  //TODO first / second
-  for (auto it = positions_.begin(); it != positions_.end(); it++) {
-    if (it->first < half) {
-      // std::cout << it->first << " " << it->second << std::endl;
-      // std::cout << at(it->second) << std::endl;
-      lower_half.insert(at(it->first));
+  for (size_t i = 0; i < monomials_.size(); i++) {
+    if (i < half) {
+      lower_half.insert(at(i));
     } else {
-      // std::cout << it->first << ' ' << at(it->second) << std::endl;
-      Monomial upper_monomial = at(it->first);
-      // std::cout << it->first << " " << it->second << std::endl;
-      // std::cout << upper_monomial << std::endl;
+      Monomial upper_monomial = at(i);
       upper_monomial.setExponent(upper_monomial.getExponent() - half);
       upper_half.insert(upper_monomial);
     }
-    // std::cout << it->first << " " << it->second << ' ' << at(it->first) <<
-    // std::endl;
   }
 }
 
 std::ostream &operator<<(std::ostream &os, const Polynomial &polynomial) {
   bool first = true;
-  for (int i = 0; i < polynomial.terms_; i++) {
+
+  for (size_t i = 0; i < polynomial.monomials_.size(); i++) {
     Monomial currentMonomial = polynomial.at(i);
-    // std::cout << i << ": ";
-    // std::cout << currentMonomial << std::endl;
     int coefficient = currentMonomial.getCoefficient();
     if (coefficient != 0) {
       if (!first) {
@@ -88,54 +73,85 @@ std::ostream &operator<<(std::ostream &os, const Polynomial &polynomial) {
 }
 
 Monomial Polynomial::at(int degree) const {
-  auto it = positions_.find(degree);
-  if (it == positions_.end()) {
+  if (degree > degree_) {
     Monomial zero(0, degree);
     return zero;
   }
-  return monomials_[it->second];
+  return monomials_[degree];
 }
 
 Monomial Polynomial::operator[](int degree) { return at(degree); }
 
 Polynomial Polynomial::operator+(const Polynomial &y) {
   Polynomial result;
-  // std::cout << result.getTerms() << std::endl;
-  // int terms = y.getTerms();
-  // std::cout << terms_ << std::endl;
-  // std::cout << terms_ << ' ' << y.getTerms() << std::endl;
-  int terms = terms_ >= y.getTerms() ? terms_ : y.getTerms();
-  for (int i = 0; i < terms; i++) {
-    // std::cout << at(i) << " + " << y.at(i) << std::endl;
-    result.insert(at(i) + y.at(i));
+  size_t it1 = 0;
+  size_t it2 = 0;
+
+  while (it1 < monomials_.size() && it2 < y.monomials_.size()) {
+    Monomial m1 = at(it1);
+    Monomial m2 = y.at(it2);
+    if (m1.getExponent() < m2.getExponent()) {
+      result.insert(m1);
+      it1++;
+    } else if (m1.getExponent() > m2.getExponent()) {
+      result.insert(m2);
+      it2++;
+    } else {
+      result.insert(m1 + m2);
+      it1++;
+      it2++;
+    }
   }
+  while (it1 < monomials_.size()) {
+    result.insert(at(it1++));
+  }
+  while (it2 < y.monomials_.size()) {
+    result.insert(y.at(it2++));
+  }
+  // !
   return result;
 }
 
 Polynomial Polynomial::operator-(const Polynomial &y) {
   Polynomial result;
-  int terms = terms_ >= y.getTerms() ? terms_ : y.getTerms();
-  for (int i = 0; i < terms; i++) {
-    result.insert(at(i) - y.at(i));
+  size_t it1 = 0;
+  size_t it2 = 0;
+
+  while (it1 < monomials_.size() && it2 < y.monomials_.size()) {
+    Monomial m1 = at(it1);
+    Monomial m2 = y.at(it2);
+    if (m1.getExponent() < m2.getExponent()) {
+      result.insert(m1);
+      it1++;
+    } else if (m1.getExponent() > m2.getExponent()) {
+      result.insert(m2);
+      it2++;
+    } else {
+      result.insert(m1 - m2);
+      it1++;
+      it2++;
+    }
   }
+  while (it1 < monomials_.size()) {
+    result.insert(at(it1++));
+  }
+  while (it2 < y.monomials_.size()) {
+    result.insert(y.at(it2++));
+  }
+  // !
+
   return result;
 }
 // TODO
-void Polynomial::operator*(const int &y) {
-  // std::cout << getDegree() << " " <<  getTerms() << std::endl;
+Polynomial Polynomial::operator*(const int &y) {
   Polynomial result;
-  result.setDegree(y - 1);
-  result.terms_ = y;
-  result.positions_.clear();
+  result.degree_ = y - 1;
+  result.terms_ = y - 1;
+
   for (int i = 0; i < terms_; i++) {
     Monomial current_monomial = at(i);
     current_monomial.setExponent(current_monomial.getExponent() + y);
     result.insert(current_monomial);
   }
-  // std::cout << getTerms() << std::endl;
-  *this = result;
-  // std::cout << getTerms() << std::endl;
-  // for (auto i = positions_.begin(); i != positions_.end(); i++) {
-  //   std::cout << i->first << ' ' << i->second << std::endl;
-  // }
+  return result;
 }
