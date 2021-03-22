@@ -13,9 +13,23 @@
 
 #include "polynomial.h"
 
+/**
+ * @brief Parent Strategy class
+ */
 class Strategy {
  public:
+  /**
+   * @brief Destroy the Strategy object.
+   */
   virtual ~Strategy() = default;
+
+  /**
+   * @brief Pure virtual method for the Polynomial product.
+   * 
+   * @param p First Polynomial.
+   * @param q Second Polynomial.
+   * @return Result Polynomial.
+   */
   virtual Polynomial PolinomialProduct(Polynomial &p, Polynomial &q) = 0;
 };
 

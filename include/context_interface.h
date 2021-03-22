@@ -15,7 +15,7 @@
 #include "strategy.h"
 
 /**
- * @brief Context Interface to use the strategies
+ * @brief Context Interface to use the strategies.
  */
 class Context {
  private:
@@ -23,23 +23,23 @@ class Context {
 
  public:
   /**
-   * @brief Construct a new Context object
+   * @brief Construct a new Context object.
    *
-   * @param strategy Chosen strategy
+   * @param strategy Chosen strategy.
    */
   Context(Strategy *strategy);
 
   /**
-   * @brief Destroy the Context object. Destroys the strategy as well
+   * @brief Destroy the Context object. Destroys the Strategy as well.
    */
   ~Context();
 
   /**
-   * @brief Method to use the current strategy
+   * @brief Method to use the current Strategy
    *
-   * @param p First polynomial
-   * @param q Second polynomial
-   * @return Polynomial result
+   * @param p First Polynomial.
+   * @param q Second Polynomial.
+   * @return Polynomial result.
    */
   Polynomial ContextInterface(Polynomial &p, Polynomial &q);
 };

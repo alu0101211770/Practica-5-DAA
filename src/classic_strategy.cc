@@ -1,3 +1,13 @@
+/**
+ * University of La Laguna
+ * ESIT (Escuela Superior de Ingeniería y Tecnología)
+ * Degree of Computer Engineering
+ * Interactive Application Programming
+ *
+ * @author Alejandro Peraza González
+ * @date 19 March 2021
+ */
+
 #include "../include/classic_strategy.h"
 
 Polynomial ClassicStrategy::PolinomialProduct(Polynomial &p, Polynomial &q) {

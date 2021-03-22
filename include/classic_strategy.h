@@ -15,6 +15,13 @@
 
 class ClassicStrategy : public Strategy {
  public:
+  /**
+   * @brief Method for the Polynomial product using the classic algorithm.
+   * 
+   * @param p First Polynomial.
+   * @param q Second Polynomial.
+   * @return Result Polynomial.
+   */
   Polynomial PolinomialProduct(Polynomial &p, Polynomial &q);
 };
 

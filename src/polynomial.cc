@@ -30,8 +30,6 @@ Polynomial::Polynomial(std::vector<int> coefficients) {
 
 int Polynomial::getDegree() const { return degree_; }
 
-void Polynomial::setDegree(int degree) { degree_ = degree; }
-
 int Polynomial::getTerms() const { return terms_; }
 
 void Polynomial::insert(Monomial monomial) {
@@ -41,7 +39,7 @@ void Polynomial::insert(Monomial monomial) {
 }
 
 void Polynomial::split(Polynomial &lower_half, Polynomial &upper_half) {
-  int half = terms_ / 2;
+  size_t half = terms_ / 2;
   for (size_t i = 0; i < monomials_.size(); i++) {
     if (i < half) {
       lower_half.insert(at(i));
@@ -74,8 +72,7 @@ std::ostream &operator<<(std::ostream &os, const Polynomial &polynomial) {
 
 Monomial Polynomial::at(int degree) const {
   if (degree > degree_) {
-    Monomial zero(0, degree);
-    return zero;
+    return Monomial(0, degree);
   }
   return monomials_[degree];
 }
@@ -142,7 +139,7 @@ Polynomial Polynomial::operator-(const Polynomial &y) {
 
   return result;
 }
-// TODO
+
 Polynomial Polynomial::operator*(const int &y) {
   Polynomial result;
   result.degree_ = y - 1;

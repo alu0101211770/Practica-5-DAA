@@ -15,6 +15,13 @@
 
 class DivideConquerStrategy : public Strategy {
  public:
+  /**
+   * @brief Method for the Polynomial product using divide and conquer.
+   * 
+   * @param p First Polynomial.
+   * @param q Second Polynomial.
+   * @return Result Polynomial.
+   */
   Polynomial PolinomialProduct(Polynomial &p, Polynomial &q);
 };
 

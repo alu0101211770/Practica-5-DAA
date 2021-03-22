@@ -18,111 +18,104 @@
 #include "monomial.h"
 
 /**
- * @brief Representation of a monomial
+ * @brief Representation of a Monomial.
  */
 class Polynomial {
  public:
   /**
-   * @brief Construct a new Polynomial object
+   * @brief Construct a new Polynomial object.
    */
   Polynomial();
 
   /**
-   * @brief Construct a new Polynomial object
+   * @brief Construct a new Polynomial object.
    *
-   * @param coefficients Array containing the coefficients
+   * @param coefficients Array containing the coefficients.
    */
   Polynomial(std::vector<int> coefficients);
 
   /**
-   * @brief Destroy the Polynomial object
+   * @brief Destroy the Polynomial object.
    */
   ~Polynomial();
 
   /**
-   * @brief Get the Degree object
+   * @brief Get the Degree attribute.
    *
-   * @return Degree of the polynomial
+   * @return Degree of the Polynomial.
    */
   int getDegree() const;
 
   /**
-   * @brief Get the Degree object
+   * @brief Get the Terms object.
    *
-   * @param Degree of the polynomial
-   */
-  void setDegree(int degree);
-
-  /**
-   * @brief Get the Terms object
-   *
-   * @return Terms of the polynomial
+   * @return Terms of the Polynomial.
    */
   int getTerms() const;
 
   /**
-   * @brief Inserts a monomial
+   * @brief Inserts a Monomial into the vector of Monomials.
    *
-   * @param monomial Monomial to be inserted
+   * @param monomial Monomial to be inserted.
    */
   void insert(Monomial monomial);
 
   /**
-   * @brief Method that splits a vector in half
+   * @brief Method that splits a Polynomial in half.
    *
-   * @param lower_half Elements within the lower half
-   * @param upper_half Elements within the upper half
+   * @param lower_half Monomials within the lower half.
+   * @param upper_half Monomials within the upper half.
    */
   void split(Polynomial &lower_half, Polynomial &upper_half);
 
   /**
-   * @brief Method to access a monomial of the polynomial
+   * @brief Method to access a Monomial of the Polynomial.
    *
-   * @param degree Of the monomial to access
-   * @return Monomial accesed
+   * @param degree Degree of the Monomial to access.
+   * @return Monomial accesed.
    */
   Monomial at(int degree) const;
 
   /**
-   * @brief Operator << overloading to print a polynomial
+   * @brief Operator << overloading to print a Polynomial.
    *
-   * @param os Output stream
-   * @param monomial Polynomial to print
+   * @param os Output stream.
+   * @param Polynomial Polynomial to print.
    * @return std::ostream&
    */
   friend std::ostream &operator<<(std::ostream &os,
                                   const Polynomial &polynomial);
 
   /**
-   * @brief Operator [] overloading to access a monomial of the polynomial
+   * @brief Operator [] overloading to access a Monomial of the Polynomial.
    *
-   * @param degree Of the monomial to access
-   * @return Monomial accesed
+   * @param degree Degree of the Monomial to access.
+   * @return Monomial accesed.
    */
   Monomial operator[](int degree);
 
   /**
-   * @brief Operator + overloading to add two polynomials
+   * @brief Operator + overloading to add two Polynomials.
    *
-   * @param y Second polynomial to add
-   * @return Polynomial with the result of the addition
+   * @param y Second polynomial to add.
+   * @return Polynomial with the result of the addition.
    */
   Polynomial operator+(const Polynomial &y);
 
   /**
-   * @brief Operator - overloading to substract two polynomials
+   * @brief Operator - overloading to substract two Polynomials.
    *
-   * @param y Second polynomial to substract
-   * @return Polynomial with the result of the substraction
+   * @param y Second polynomial to substract.
+   * @return Polynomial with the result of the substraction.
    */
   Polynomial operator-(const Polynomial &y);
 
   /**
-   * @brief Operator * overloading to multiply a polynomial with a
+   * @brief Operator * overloading to multiply a Polynomial with a
    * exponent.
    *
-   * @param y Integer exponent
-   * @return Polynomial with the result of the multiplication
+   * @param y Integer exponent.
+   * @return Polynomial with the result of the multiplication.
    */
   Polynomial operator*(const int &y);
 
